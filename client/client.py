@@ -11,7 +11,6 @@ HEADERSIZE = 10
 
 
 encoding = 'utf-8'
-
 udp_host = '127.0.0.1'
 udp_port = 13117	
 
