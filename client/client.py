@@ -15,12 +15,10 @@ udp_host = '127.0.0.1'
 udp_port = 13117	
 
 client_socket = socket.socket()
-
-#teamname = input("Team name: ")
+# data
 teamname ="\n                                                 ,/ \n                                                // \n                                              ,// \n                                  ___   /|   |// \n                              `__/\_ --(/|___/-/ \n                           \|\_-\___ __-_`- /-/ \.\n                          |\_-___,-\_____--/_)' ) \ \n                           \ -_ /     __ \( `( __`\|\n                           `\__|      |\)\ ) /(/|\n   ,._____.,            ',--//-|      \  |  '   / \n  /     __. \,          / /,---|       \       / \n / /    _. \  \        `/`_/ _,'        |     |\n|  | ( (  \   |      ,/\'__/'/          |     |\n|  \  \`--, `_/_------______/           \(   )/ \n| | \  \_. \,                            \___/\ \n| |  \_   \  \                                 \ \n\ \    \_ \   \   /                             \ \n \ \  \._  \__ \_|       |                       \ \n  \ \___  \      \       |                        \ \n   \__ \__ \  \_ |       \                         |\n   |  \_____ \  ____      |                        |\n   | \  \__ ---' .__\     |        |               |\n   \  \__ ---   /   )     |        \              / \n    \   \____/ / ()(      \          `---_       /|\n     \__________/(,--__    \_________.    |    ./ |\n       |     \ \  `---_\--,           \   \_,./   |\n       |      \  \_ ` \    /`---_______-\   \\    / \n        \      \.___,`|   /              \   \\   \ \n         \     |  \_ \|   \              (   |:    |\n          \    \      \    |             /  / |    ;\n           \    \      \    \          ( `_'   \  |\n            \.   \      \.   \          `__/   |  |\n              \   \       \.  \                |  |\n               \   \        \  \               (  )\n                \   |        \  |              |  |\n                 |  \         \ \              I  `\n                 ( __;        ( _;            ('-_';\n                 |___\        \___:            \___:"
 teamname = "https://www.theraleighregister.com/tcp1.html" + teamname
 username = teamname.encode(encoding)
-#username_header = f"{len(username):<{HEADERSIZE}}".encode("utf-8")
 
 
 
@@ -42,15 +40,12 @@ def wait_for_end_game() :
 def game_start() :
  
     try:
-        #wait for a "game start message"
-        
         ready = select.select([client_socket], [], [])
 
         message = client_socket.recv(2048).decode(encoding)
         print(message)
 
         #start of the game  
-
         game_listner = threading.Thread(target=wait_for_end_game)
         game_listner.start() 
         while game_listner.is_alive():
@@ -62,7 +57,6 @@ def game_start() :
                 break
             client_socket.send(message)
 
-        
         # lsiten to stdin and the server. send any key press, untill a message arrive from the server (expected to be game end msg)
      
              
